@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.4.17;
 
 contract Lotery {
     address public manager;
@@ -19,15 +19,25 @@ contract Lotery {
         return
             uint(
                 keccak256(
-                    abi.encode(block.prevrandao, block.timestamp, players)
+                    abi.encode(block.difficulty, block.timestamp, players)
                 )
             );
     }
 
     function pickWinner() public restricted {
+        // uint index = random() % players.length;
+        // payable(players[index]).transfer(address(this).balance);
+        // address payable winner = payable(players[index]);
+        // uint contractBalance = address(this).balance;
+
+        // winner.transfer(contractBalance);
+        // players = new address[](0);
+
         uint index = random() % players.length;
-        address winner = payable(players[index]);
-        winner.transfer(address(this).balance);
+        address winner = players[index];
+        uint contractBalance = address(this).balance;
+
+        winner.transfer(contractBalance);
         players = new address[](0);
     }
 
