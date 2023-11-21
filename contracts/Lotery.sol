@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.17;
+pragma solidity ^0.8.17;
 
 contract Lotery {
     address public manager;
@@ -26,7 +26,8 @@ contract Lotery {
 
     function pickWinner() public restricted {
         uint index = random() % players.length;
-        payable(players[index]).transfer(address(this).balance);
+        address winner = payable(players[index]);
+        winner.transfer(address(this).balance);
         players = new address[](0);
     }
 
