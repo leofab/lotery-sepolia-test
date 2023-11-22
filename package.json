@@ -1,18 +1,18 @@
 {
-  "name": "simple-inbox-rinkeby",
+  "name": "lotery-sepolia-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout 20000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ganache": "^7.9.1",
     "ganache-cli": "^6.12.2",
-    "mocha": "^4.1.0",
-    "solc": "^0.4.26",
-    "truffle-hdwallet-provider": "^1.0.17",
+    "mocha": "^10.2.0",
+    "solc": "^0.4.25",
     "web3": "^4.2.2"
   }
 }
